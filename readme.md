@@ -7,11 +7,11 @@ Este proyecto plantea la creación de un sistema de pedidos online para un resta
 ## Prerequisitos
 
 Contar con los siguientes software instalados:
--Visual Studio Code
--Node
--Xampp
--MySql Workbench
--Postman
+  Visual Studio Code
+  Node
+  Xampp
+  MySql Workbench
+  Postman
 
 ## Instalación
 
