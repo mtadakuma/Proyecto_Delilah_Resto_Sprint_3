@@ -1,0 +1,798 @@
+openapi: 3.0.0
+info:
+  description: Documentacion de el api de delilah resto
+  version: 1.0.0
+  title: API REST Delilah Resto
+  contact:
+    email: tadakumamiguelangel@gmail.com
+servers:
+  - url: http://localhost:3000
+tags:
+  - name: platos
+    description: Endpoints relacionados con platos
+  - name: pedidos
+    description: Endpoints relacionados con pedidos
+  - name: auth
+    description: Endpoints relacionados autenticacion y registro
+paths:
+  /platos:
+    get:
+      summary: Traer todos los platos disponibles
+      tags:
+        - platos
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plato'
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+    post:
+      summary: Crear nuevo plato
+      tags:
+        - platos
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: Pizza pepperoni
+                precio:
+                  type: number
+                  example: '50.5'
+                imagen:
+                  type: string
+                  example: >-
+                    https://www.gimmesomeoven.com/wp-content/uploads/2017/03/Rosemary-Focaccia-Bread-Recipe-1-1.jpg
+      responses:
+        '201':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plato'
+        '400':
+          description: campos vacíos
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Algún campo está vacío.
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+        '403':
+          description: sin permisos de adminsitrador
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Sin permisos de administrador
+        '406':
+          description: El plato ya existe
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: El plato ya existe en la base
+  /platos/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id de plato
+          schema:
+            type: integer
+            example: 1
+      summary: Traer un plato por id
+      tags:
+        - platos
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plato'
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+    put:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id de plato
+          schema:
+            type: integer
+            example: 1
+      summary: Modificar datos de plato
+      tags:
+        - platos
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  example: Pizza pepperoni
+                precio:
+                  type: number
+                  example: '100.5'
+                imagen:
+                  type: string
+                  example: >-
+                    https://www.gimmesomeoven.com/wp-content/uploads/2017/03/Rosemary-Focaccia-Bread-Recipe-1-1.jpg
+      responses:
+        '201':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: string
+                example: El pedido 1 ha sido modificado.
+        '400':
+          description: campos vacíos
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Algún campo está vacío.
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+        '403':
+          description: sin permisos de adminsitrador
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Sin permisos de administrador
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id de plato
+          schema:
+            type: integer
+            example: 1
+      summary: Eliminar un plato por id
+      tags:
+        - platos
+      security:
+        - BearerAuth: []
+      responses:
+        '204':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: string
+                example: El plato con id 1 fue eliminado
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+        '403':
+          description: sin permisos de adminsitrador
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Sin permisos de administrador
+        '404':
+          description: el plato no existe
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: No existe plato con id 15
+  /pedidos:
+    get:
+      summary: Traer todos los pedidos disponibles
+      tags:
+        - pedidos
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      description: id de pedido
+                      example: 1
+                    precio_total:
+                      type: number
+                      example: '105.5'
+                    estado:
+                      type: string
+                      example: NUEVO
+                    forma_pago:
+                      type: string
+                      example: EF
+                    usuarios_id:
+                      type: integer
+                      example: '1'
+                    createdAt:
+                      type: string
+                      example: '2021-09-12T22:27:34.000Z'
+                    updatedAt:
+                      type: string
+                      example: '2021-09-12T22:27:34.000Z'
+                    usuario:
+                      $ref: '#/components/schemas/Usuario'
+                    platos:
+                      type: array
+                      items:
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          precio_total:
+                            type: number
+                            example: 105.5
+                          estado:
+                            type: string
+                            example: NUEVO
+                          forma_pago:
+                            type: string
+                            example: MP
+                          pedidos_has_platos:
+                            $ref: '#/components/schemas/PedidoHasPlatos'
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+        '403':
+          description: sin permisos de adminsitrador
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Sin permisos de administrador
+    post:
+      summary: Crear nuevo pedido
+      tags:
+        - pedidos
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                forma_pago:
+                  type: string
+                  example: MP
+                platos:
+                  type: array
+                  items:
+                    properties:
+                      platoId:
+                        type: integer
+                        example: 1
+                      cantidad:
+                        type: integer
+                        example: 1
+      responses:
+        '201':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pedido'
+        '400':
+          description: campos vacíos
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Algún campo está vacío.
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+  /pedidos/{id}:
+    put:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id de plato
+          schema:
+            type: integer
+            example: 1
+      summary: Modificar pedido
+      tags:
+        - pedidos
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                precio_total:
+                  type: number
+                  example: '150.5'
+                forma_pago:
+                  type: string
+                  example: TC
+      responses:
+        '201':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: string
+                example: El pedido 1 se ha modificado.
+        '400':
+          description: campos vacíos
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Algún campo está vacío.
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+        '403':
+          description: sin permisos de adminsitrador
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Sin permisos de administrador
+        '404':
+          description: El pedido no existe
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: no existe pedido con id 100
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id de plato
+          schema:
+            type: integer
+            example: 1
+      summary: Eliminar pedido
+      tags:
+        - pedidos
+      security:
+        - BearerAuth: []
+      responses:
+        '204':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: string
+                example: El pedido con id 1 fue eliminado.
+        '400':
+          description: campos vacíos
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Algún campo está vacío.
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+        '403':
+          description: sin permisos de adminsitrador
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Sin permisos de administrador
+        '404':
+          description: El pedido no existe
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: no existe pedido con id 100
+  /pedidos/cambiarEstado/{id}:
+    put:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: id de plato
+          schema:
+            type: integer
+            example: 1
+      summary: Modificar pedido
+      tags:
+        - pedidos
+      security:
+        - BearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                estado:
+                  type: string
+                  example: CANCELADO
+      responses:
+        '201':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: string
+                example: El pedido 1 se ha cambiado a estado CANCELADO
+        '400':
+          description: campos vacíos
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: El campo estado está vacío.
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+        '403':
+          description: sin permisos de adminsitrador
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Sin permisos de administrador
+        '404':
+          description: El pedido no existe
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: no existe pedido con id 100
+  /misPedidos:
+    get:
+      summary: Traer todos los pedidos disponibles para el usuario
+      tags:
+        - pedidos
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      description: id de pedido
+                      example: 1
+                    precio_total:
+                      type: number
+                      example: '105.5'
+                    estado:
+                      type: string
+                      example: NUEVO
+                    forma_pago:
+                      type: string
+                      example: EF
+                    usuarios_id:
+                      type: integer
+                      example: '1'
+                    createdAt:
+                      type: string
+                      example: '2021-09-12T22:27:34.000Z'
+                    updatedAt:
+                      type: string
+                      example: '2021-09-12T22:27:34.000Z'
+                    usuario:
+                      $ref: '#/components/schemas/Usuario'
+                    platos:
+                      type: array
+                      items:
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          precio_total:
+                            type: number
+                            example: 105.5
+                          estado:
+                            type: string
+                            example: NUEVO
+                          forma_pago:
+                            type: string
+                            example: MP
+                          pedidos_has_platos:
+                            $ref: '#/components/schemas/PedidoHasPlatos'
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  UnauthorizedError: No authorization token was found
+  /login:
+    post:
+      tags:
+        - auth
+      summary: Loggear usuario
+      description: log in
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                correo:
+                  type: string
+                  description: email
+                  example: max@apple.com
+                contrasena:
+                  type: string
+                  example: max2021
+      responses:
+        '200':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  token: >-
+                    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY29ycmVvIjoibWF4QGFwcGxlLmNvbSIsIm5vbWJyZSI6Ik1heCBkZSBsYSBSb3NhIiwiaWF0IjoxNjMxODkwNjkxLCJleHAiOjE2MzE4OTc4OTF9.fSj3X-7HBSHsZXgCQCnJWHCHbb2yopMMMN5R-sHFUUo
+        '401':
+          description: sin autorización
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Correo y/o contraseña invalido
+        '500':
+          description: 'Error: Internal server error'
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Error, intente nuevamente mas tarde...
+  /registrar:
+    post:
+      tags:
+        - auth
+      summary: Registrar usuario
+      description: registro de usuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  description: nombre
+                  example: luciano
+                usuario:
+                  type: string
+                  example: lucianoG
+                correo:
+                  type: string
+                  example: luciano2@google.com
+                telefono:
+                  type: string
+                  example: +54 123123123123
+                direccion:
+                  type: string
+                  example: Calle siempre viva 123
+                contrasena:
+                  type: string
+                  example: luciano2021
+      responses:
+        '201':
+          description: peticion ok
+          content:
+            application/json:
+              schema:
+                type: string
+                example: nuevo usuario creado
+        '400':
+          description: campos vacíos
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Algun campo está vacío
+        '406':
+          description: usuario ya existe en la base
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: El usuario ya existe en la base
+        '500':
+          description: 'Error: Internal server error'
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  error: Error, intente nuevamente mas tarde...
+components:
+  schemas:
+    Plato:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        imagen:
+          type: string
+          example: >-
+            https://www.gimmesomeoven.com/wp-content/uploads/2017/03/Rosemary-Focaccia-Bread-Recipe-1-1.jpg
+        nombre:
+          type: string
+          example: Focaccia
+        precio:
+          type: number
+          example: 35.5
+    Pedido:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        precio_total:
+          type: number
+          example: 105.5
+        estado:
+          type: string
+          example: NUEVO
+        forma_pago:
+          type: string
+          example: MP
+        usuarios_id:
+          type: integer
+          example: 1
+        updatedAt:
+          type: string
+          example: '2021-09-17T09:54:40.709Z'
+        createdAt:
+          type: string
+          example: '2021-09-17T09:54:40.709Z'
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nombre:
+          type: string
+          example: Miguel Tadakuma
+        correo:
+          type: string
+          example: miguel@google.com
+    PedidoHasPlatos:
+      type: object
+      properties:
+        cantidad:
+          type: integer
+          example: 1
+        pedido_id:
+          type: integer
+          example: 1
+        plato_id:
+          type: integer
+          example: 1
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

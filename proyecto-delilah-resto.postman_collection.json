@@ -1,0 +1,549 @@
+{
+	"info": {
+		"_postman_id": "339218ae-dcba-4d20-a92c-f821a250e3bb",
+		"name": "proyecto-delilah-resto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "obtener platos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY29ycmVvIjoibWluY2h5QHRlcmFkYXRhLmNvbSIsIm5vbWJyZSI6Ik1pZ3VlbCBUYWRha3VtYSIsImlhdCI6MTYzMTU4NDEwNCwiZXhwIjoxNjMxNTkxMzA0fQ.d54jJCH5v_2kTeuuOGGhQxnPASSH3v1LgoGXvjzlHA4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/platos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"platos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener platos por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/platos/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"platos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener pedidos Admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY29ycmVvIjoibWluY2h5QHRlcmFkYXRhLmNvbSIsIm5vbWJyZSI6Ik1pZ3VlbCBUYWRha3VtYSIsImlhdCI6MTYzMTU4NDEwNCwiZXhwIjoxNjMxNTkxMzA0fQ.d54jJCH5v_2kTeuuOGGhQxnPASSH3v1LgoGXvjzlHA4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener pedidos Comon",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY29ycmVvIjoibWF4QGFwcGxlLmNvbSIsIm5vbWJyZSI6Ik1heCBkZSBsYSBSb3NhIiwiaWF0IjoxNjMxNTgzOTk1LCJleHAiOjE2MzE1OTExOTV9._Xl38kkRHyK4XacgoRPQ-3_t8RDehuIfir0Prs5n_TI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener mis pedidos Comon",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY29ycmVvIjoibWF4QGFwcGxlLmNvbSIsIm5vbWJyZSI6Ik1heCBkZSBsYSBSb3NhIiwiaWF0IjoxNjMxNTgzOTk1LCJleHAiOjE2MzE1OTExOTV9._Xl38kkRHyK4XacgoRPQ-3_t8RDehuIfir0Prs5n_TI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loggear Usuario Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"correo\":\"minchy@teradata.com\",\r\n    \"contrasena\": \"minchy2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loggear Usuario Comun",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"correo\":\"max@apple.com\",\r\n    \"contrasena\": \"max2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear pedido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY29ycmVvIjoibWluY2h5QHRlcmFkYXRhLmNvbSIsIm5vbWJyZSI6Ik1pZ3VlbCBUYWRha3VtYSIsImlhdCI6MTYzMTU3NzYwMywiZXhwIjoxNjMxNTg0ODAzfQ.PN3N1EiLieDKsTb6012m0u8KnnYLtT6TWkiuUpR9ur4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"forma_pago\":\"MP\",\r\n    \"platos\":[\r\n        {\r\n            \"platoId\": 1,\r\n            \"cantidad\": 2\r\n        },\r\n        {\r\n            \"platoId\": 2,\r\n            \"cantidad\": 2\r\n        },\r\n        {\r\n            \"platoId\": 3,\r\n            \"cantidad\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"luciano\",\r\n    \"usuario\": \"lucianoG\",\r\n    \"correo\": \"luciano2@google.com\",\r\n    \"telefono\": \"+54 123123123123\",\r\n    \"direccion\": \"Calle siempre viva 123\",\r\n    \"contrasena\": \"luciano2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/registrar",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar usuario invalido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"luciano\",\r\n    \"usuario\": \"lucianoG\",\r\n    \"correo\": \"luciano@google.com\",\r\n    \"telefono\": \"+54 123123123123\",\r\n    \"direccion\": \"Calle siempre viva 123\",\r\n    \"contrasena\": \"luciano2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/registrar",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear nuevo plato",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY29ycmVvIjoibWluY2h5QHRlcmFkYXRhLmNvbSIsIm5vbWJyZSI6Ik1pZ3VlbCBUYWRha3VtYSIsImlhdCI6MTYzMTU4NDEwNCwiZXhwIjoxNjMxNTkxMzA0fQ.d54jJCH5v_2kTeuuOGGhQxnPASSH3v1LgoGXvjzlHA4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Pizza pepperoni\",\r\n    \"precio\": 50,\r\n    \"imagen\": \"https://www.saborusa.com/wp-content/uploads/2019/10/Animate-a-disfrutar-una-deliciosa-pizza-de-salchicha-Foto-destacada.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/platos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"platos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear nuevo plato invalido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY29ycmVvIjoibWluY2h5QHRlcmFkYXRhLmNvbSIsIm5vbWJyZSI6Ik1pZ3VlbCBUYWRha3VtYSIsImlhdCI6MTYzMTU4NDEwNCwiZXhwIjoxNjMxNTkxMzA0fQ.d54jJCH5v_2kTeuuOGGhQxnPASSH3v1LgoGXvjzlHA4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Pizza pepperoni\",\r\n    \"precio\": 50,\r\n    \"imagen\": \"https://www.saborusa.com/wp-content/uploads/2019/10/Animate-a-disfrutar-una-deliciosa-pizza-de-salchicha-Foto-destacada.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/platos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"platos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar plato",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY29ycmVvIjoibWF4QGFwcGxlLmNvbSIsIm5vbWJyZSI6Ik1heCBkZSBsYSBSb3NhIiwiaWF0IjoxNjMxNTgzOTk1LCJleHAiOjE2MzE1OTExOTV9._Xl38kkRHyK4XacgoRPQ-3_t8RDehuIfir0Prs5n_TI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Pizza napolitana\",\r\n    \"precio\": 50,\r\n    \"imagen\": \"https://www.saborusa.com/wp-content/uploads/2019/10/Animate-a-disfrutar-una-deliciosa-pizza-de-salchicha-Foto-destacada.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/platos/12",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"platos",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar pedido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY29ycmVvIjoibWF4QGFwcGxlLmNvbSIsIm5vbWJyZSI6Ik1heCBkZSBsYSBSb3NhIiwiaWF0IjoxNjMxNTgzOTk1LCJleHAiOjE2MzE1OTExOTV9._Xl38kkRHyK4XacgoRPQ-3_t8RDehuIfir0Prs5n_TI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"precio_total\": 150,\r\n    \"forma_pago\": \"EF\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/6",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar pedido estado",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY29ycmVvIjoibWF4QGFwcGxlLmNvbSIsIm5vbWJyZSI6Ik1heCBkZSBsYSBSb3NhIiwiaWF0IjoxNjMxNTgzOTk1LCJleHAiOjE2MzE1OTExOTV9._Xl38kkRHyK4XacgoRPQ-3_t8RDehuIfir0Prs5n_TI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"precio_total\": 150,\r\n    \"forma_pago\": \"EF\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/6",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar plato",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY29ycmVvIjoibWluY2h5QHRlcmFkYXRhLmNvbSIsIm5vbWJyZSI6Ik1pZ3VlbCBUYWRha3VtYSIsImlhdCI6MTYzMTU4NDEwNCwiZXhwIjoxNjMxNTkxMzA0fQ.d54jJCH5v_2kTeuuOGGhQxnPASSH3v1LgoGXvjzlHA4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/platos/11",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"platos",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar pedido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiY29ycmVvIjoibWluY2h5QHRlcmFkYXRhLmNvbSIsIm5vbWJyZSI6Ik1pZ3VlbCBUYWRha3VtYSIsImlhdCI6MTYzMTU4NDEwNCwiZXhwIjoxNjMxNTkxMzA0fQ.d54jJCH5v_2kTeuuOGGhQxnPASSH3v1LgoGXvjzlHA4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
