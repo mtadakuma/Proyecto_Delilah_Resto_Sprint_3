@@ -7,15 +7,15 @@ Este proyecto plantea la creación de un sistema de pedidos online para un resta
 ## Prerequisitos
 
 Contar con los siguientes software instalados:
-  Visual Studio Code
-  Node
-  Xampp
-  MySql Workbench
-  Postman
+  - Visual Studio Code
+  - Node
+  - Xampp
+  - MySql Workbench
+  - Postman
 
 ## Instalación
 
--Inicializar Xampp e inicializar el módulo de MySQL.
+- Inicializar Xampp e inicializar el módulo de MySQL.
 -Dentro de MySql Workbench crear una nueva conexión a la base
 
 ```
@@ -26,13 +26,13 @@ Port: 3306
 Username: root 
 ```
 
--Desde la ventana "Query1" para ejecutar las sentencias de sql ejecutar las sentencias del archivo `script creacion DB.txt`.
+- Desde la ventana "Query1" para ejecutar las sentencias de sql ejecutar las sentencias del archivo `script creacion DB.txt`.
 
--Abrir la carpeta del proyecto dentro de Visual Studio code
--Dentro de la terminar de Bash ubicarse dentro de la carpeta del proyecto `cd 'proyecto-delilah-resto'`
--Ejecutar la sentencia `npm install` para instalar todas las dependencias del archivo package.json. 
--Una vez instaladas ejecutar el comando `npm run dev` para inicializar el servidor.
--Si el servidor se encuentra bien inicializado la consola dará el mensaje "conexion exitosa".
+- Abrir la carpeta del proyecto dentro de Visual Studio code
+- Dentro de la terminar de Bash ubicarse dentro de la carpeta del proyecto `cd 'proyecto-delilah-resto'`
+- Ejecutar la sentencia `npm install` para instalar todas las dependencias del archivo package.json. 
+- Una vez instaladas ejecutar el comando `npm run dev` para inicializar el servidor.
+- Si el servidor se encuentra bien inicializado la consola dará el mensaje "conexion exitosa".
 
 ## Aclaraciones
 
